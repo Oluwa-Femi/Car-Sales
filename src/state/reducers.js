@@ -1,3 +1,5 @@
+import * as types from './actionTypes'
+
 const initialState = {
     additionalPrice: 0,
     car: {
@@ -16,8 +18,24 @@ const initialState = {
   };
 
   export function reducer(state = initialState, action) {
-      switch(action.type) {
-          default:
-              return state;
+    switch (action.type) {
+        case types.ADD_ITEM:
+          return {
+            ...state,
+            car: {
+              ...state.car,
+              features: state.car.features.concat(action.payload)
+            }
+          }
+        case types.REMOVE_ITEM:
+          return {
+            ...state,
+            car: {
+              ...state.car,
+              features: state.car.features.filter((feature) => feature.id !== action.payload.id)
+            }
+          }
+        default:
+          return state;
       }
   } 

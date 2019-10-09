@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actionCreators from '../state/actionCreators'
 
 const Header = props => {
   return (
@@ -15,4 +16,5 @@ const Header = props => {
 
 export default connect(
   state => state,
+  actionCreators
 )(Header);
