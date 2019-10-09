@@ -9,7 +9,12 @@ const Header = props => {
         <img src={props.state.car.image} alt={props.state.car.name} />
       </figure>
       <h2>{props.state.car.name}</h2>
-      <p>Amount: ${props.state.car.price}</p>
+      <p>{ 
+        props.state.car.features.length ?
+        props.state.car.features.reduce((acc, feature) => acc + feature.price, props.state.car.price):
+        props.state.car.price
+      }
+      </p>
     </>
   );
 };
